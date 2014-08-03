@@ -25,6 +25,7 @@ function populate() {
 function createIcon(app, entryKey) {
   let div = document.createElement("div");
   div.className = "icon";
+  div.style.backgroundImage = 'url(' + app.origin + icon(app) + ')';
 
   let name;
 
@@ -59,14 +60,19 @@ function createIcon(app, entryKey) {
   return div;
 }
 
-function updateWallpaper() {
-  let req = navigator.mozSettings.createLock().get('wallpaper.image');
-  req.onsuccess = function onsuccess() {
-    let blob = req.result['wallpaper.image'];
-    let url = URL.createObjectURL(blob);
-    console.log("wallpaper", url);
-    document.body.style.backgroundImage = "url(" + url + ")";
-  };
+function icon(app) {
+  var icons = app.manifest.icons;
+  if (!icons) {
+    return '';
+  }
+
+  var lastIcon = 0;
+  for (var i in icons) {
+    if (i > lastIcon) {
+      lastIcon = i;
+    }
+  }
+  return icons[lastIcon];
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -74,6 +80,4 @@ window.addEventListener("DOMContentLoaded", () => {
   appMgr.oninstall = populate;
   appMgr.onuninstall = populate;
   populate();
-  navigator.mozSettings.addObserver('wallpaper.image', updateWallpaper);
-  updateWallpaper();
 }, true);

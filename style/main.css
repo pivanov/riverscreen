@@ -1,77 +1,14 @@
-@font-face {
-  font-family: 'Bebas';
-  src: url('fonts/BebasNeue.otf');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('fonts/fontawesome-webfont.woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 * { -moz-box-sizing: border-box; }
 
 html, body {
-  height: 100%;
   width: 100%;
-  padding: 0;
+  height: 100%;
   margin: 0;
-  background-size: 100% auto;
-  overflow-y: scroll;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  font-size: 10px;
 }
 
 #icons {
   width: 100%;
-  flex: auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding: 0 40px;
-}
-
-.character:before {
-  content: var(character);
-}
-
-/* Clock */
-
-#clock {
-  font-family: 'Bebas';
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  margin: 50px 0;
-  color: white;
-  flex-direction: column;
-}
-
-#time {
-  line-height: 100%;
-  font-size: 10rem;
-  text-shadow: 0 2px 0 #CCC;
-  letter-spacing: -1px;  
-}
-
-.clock-hours {
-}
-.clock-minutes {
-}
-
-#date {
-  font-size: 2.5rem;
-}
-
-@media only screen
-and (max-width : 320px) {
-  #time {
-    font-size: 9.5rem;
-  }
+  padding: 0;
 }
